@@ -1,0 +1,22 @@
+seedbox42:
+    restart: always
+    build: seedbox42
+    links:
+        - mongodb
+    volumes:
+        - ./downloads:/seedbox42
+    environment:
+        - pwd
+    ports:
+        - "4242:3000"
+
+
+
+mongodb:
+    restart: always
+    build: mongodb
+    expose:
+        - "27017"
+#    ports:
+#        - "27017:27017"
+
