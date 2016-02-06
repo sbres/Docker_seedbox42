@@ -1,22 +1,18 @@
 seedbox42:
     restart: always
     build: seedbox42
-    links:
-        - mongodb
+    net: torrent
     volumes:
         - ./downloads:/seedbox42
     environment:
         - pwd
     ports:
         - "4242:3000"
-
-
+    container_name: seedbox42
 
 mongodb:
     restart: always
+    net: torrent
     build: mongodb
-    expose:
-        - "27017"
-#    ports:
-#        - "27017:27017"
+    container_name: mongodb
 
