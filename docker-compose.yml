@@ -1,18 +1,31 @@
-seedbox42:
-    restart: always
-    build: seedbox42
-    net: torrent
-    volumes:
-        - ./downloads:/seedbox42
-    environment:
-        - pwd
-    ports:
-        - "4242:3000"
-    container_name: seedbox42
+version: '2'
+services:
+    seedbox42:
+        restart: always
+        build: 
+            context: seedbox42
+            dockerfile: Dockerfile
+        networks:
+            - torrent
+        volumes:
+            - ./downloads:/seedbox42
+        environment:
+            - pwd
+        ports:
+            - "4243:3000"
+        container_name: seedbox42
 
-mongodb:
-    restart: always
-    net: torrent
-    build: mongodb
-    container_name: mongodb
+    mongodb:
+        restart: always
+        networks:
+            - torrent
+        build:
+            context: mongodb
+            dockerfile: Dockerfile
+        container_name: mongodb
 
+
+
+networks:
+    torrent:
+        driver: bridge
