@@ -21,11 +21,6 @@ Now that you are ready to go, clone this repo !
 git clone https://github.com/sbres/Docker_seedbox42.git && cd Docker_seedbox42
 ```
 
-Create the network bridge for this compose setup :  
-```
-./network.sh
-```
-
 And now you just have to run docker compose.
 ```
 docker-compose up
